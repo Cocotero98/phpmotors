@@ -6,11 +6,9 @@ body{
     font-family: 'Rajdhani', sans-serif;
     margin: auto;
 }
-h1{
+
+#home-h1{
     display: none;
-}
-#template-h1{
-    display: block;
 }
 #wrapper{
     background-color: white;

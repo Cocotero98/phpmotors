@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, intial-scale=1">
         <meta name="description" content="Agustin Aguilar's PHP Motors website project">        
-        <title>PHP Motors</title>
+        <title>Home | PHP Motors</title>
         <link rel="stylesheet" href="css/normalize.css">
         <link href="css/base.css" rel="stylesheet"  type = "text/css">
         <link href="css/medium.css" rel="stylesheet" type="text/css">
@@ -16,7 +16,7 @@
             <?php require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/header.php';?>
         </header>
         <main>
-            <h1>Welcome to PHP Motors!</h1>
+            <h1 id="home-h1">Welcome to PHP Motors!</h1>
             <h2 id="small-title">Welcome to PHP Motors!</h2>
         <div class="delorean">
             <div class="delorean-description">
