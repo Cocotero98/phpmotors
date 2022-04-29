@@ -1,0 +1,8 @@
+@media only screen and (min-width: 64rem){
+    .delorean-description {
+        font-size: x-large;
+    }
+    .delorean a{
+        top: 120px;
+    }
+}
