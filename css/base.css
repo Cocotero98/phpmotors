@@ -9,6 +9,9 @@ body{
 h1{
     display: none;
 }
+#template-h1{
+    display: block;
+}
 #wrapper{
     background-color: white;
 } 
