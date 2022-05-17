@@ -14,6 +14,7 @@
         <div id="wrapper">
         <header>
             <?php require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/header.php';?>
+            <nav><?php echo $navList; ?></nav>
         </header>
         <main>
             <h1 id="home-h1">Welcome to PHP Motors!</h1>

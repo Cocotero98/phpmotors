@@ -144,3 +144,50 @@ footer p{
 footer footer{
     border-top: none;
 }
+form fieldset{
+    display: flex;
+    flex-direction: column;
+}
+form fieldset label{
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+form fieldset{
+    border-radius: 5px;
+}
+input{
+    height: 30px;
+    padding-left: 5px;
+}
+form fieldset button{
+    width: 60px;
+    height: 45px;
+    align-self: center;
+    background-color: black;
+    color: white;
+    border: white;
+    border-radius: 5px;
+    /* box-shadow: 1px 1px 3px gray; */
+}
+form fieldset button:hover{
+    box-shadow: 1px 1px 3px gray;
+}
+#sign-up{
+    font-size: x-large;
+    grid-column: 1/3;
+    width: 100%;
+    justify-self: center;
+    max-width: 600px;
+    font-weight: bold;
+}
+#sign-up a{
+    color: #113083;
+}
+#sign-up a:hover{
+    text-shadow: #3a3a3a 1px 1px 3px;
+}
+#required-mark{
+    font-weight: bold;
+}

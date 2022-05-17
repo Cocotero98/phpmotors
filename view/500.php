@@ -13,14 +13,13 @@
         <div id="wrapper">
         <header>
             <?php require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/header.php';?>
+            <nav><?php echo $navList; ?></nav>
         </header>
         <main class='error-500'>
             <h1>Server Error</h1>
             <p>Sorry, our server seems to be experiencing some technical difficulties.</p>
         </main>
-        <footer>
             <?php require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/footer.php';?>
-        </footer>
 </div>
     </body>
 </html>
