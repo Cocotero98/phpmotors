@@ -33,6 +33,9 @@ $navList .= '</ul>';
         $action = filter_input(INPUT_GET, 'action');
     }
     switch ($action){
+        case 'home':
+            include '../view/home.php';
+            break;
         case 'login':
             include '../view/login.php';
             break;
