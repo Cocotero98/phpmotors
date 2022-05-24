@@ -17,6 +17,11 @@
         </header>        
         <main class="login">
             <h1>Login</h1>
+            <?php
+            if (isset($message)) {
+            echo $message;
+            }
+            ?>
             <form>
                 <fieldset>
                     <label for="clientEmail">Email

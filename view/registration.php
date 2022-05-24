@@ -18,10 +18,15 @@
         <main class="registration">
             <h1>Register</h1>
             <h2>Complete the following form</h2>
-            <form>
+            <?php
+                if (isset($message)) {
+                    echo $message;
+                    }
+            ?>
+            <form method="post" action="/phpmotors/accounts/index.php">
                 <fieldset>
                     <label for="clientFirstname">First Name *
-                        <input type="text" name="clientFirstname" id="clientFirstname" required>
+                        <input type="text" name="clientFirstname" id="clientFirstname">
                     </label>
                     <label for="clientLastname">Last Name *
                         <input type="text" name="clientLastname" id="clientLastname" required>
@@ -32,7 +37,8 @@
                     <label for="clientPassword">Password *
                         <input type="password" name="clientPassword" id="clientPassword" required>
                     </label>
-                    <button type="submit">Sign-up</button>
+                    <button type="submit" name="submit">Sign-up</button>
+                    <input type="hidden" name="action" value="register">
                 </fieldset>
             </form>
             <p id='required-mark'>* are required fields</p>
