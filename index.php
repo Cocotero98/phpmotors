@@ -36,8 +36,8 @@ $navList .= '</ul>';
         case 'template':
             include 'view/template.php';
             break;
-        case 'something':
-
+        case 'vehicle':
+            include 'view/vehicle-management.php';
             break;
         default:
             include 'view/home.php';

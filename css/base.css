@@ -191,3 +191,53 @@ form fieldset button:hover{
 #required-mark{
     font-weight: bold;
 }
+.vehicles{
+    /* border: 1px solid black; */
+    max-width: 500px;
+    padding: 20px;
+    margin: 30px 0 50px;
+}
+.vehicles a{
+    display: block;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    width: 130px;
+    text-align: center;
+    border: solid 1px #4c96d7;
+    border-radius: 10px;
+    padding: 5px;
+    margin:10px 0;
+}
+.vehicles p{
+    grid-column: 1/3;
+    text-align: center;
+}
+.vehicles a:hover{
+    background-color: #4c96d7;
+}
+.classification-main{
+    max-width: 600px;
+}
+.classification-main h1{
+    grid-column: 1/3;
+}
+.classification-main form label{
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+form select{
+    padding: 13px 5px;
+}
+.classification-main form button{
+    padding: 10px;
+    margin: 10px 0;
+    background-color: black;
+    color: white;
+    border: 1px solid #4c96d7;
+    border-radius: 10px;
+}
+.classification-main form button:hover{
+    background-color: #4c96d7;
+}
