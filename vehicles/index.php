@@ -25,7 +25,7 @@ foreach ($classifications as $classification) {
 $navList .= '</ul>';
 
 //
-$classificationList = "<select id='classification' name='classification'><option>Choose Car Classification</option>";
+$classificationList = "<select id='classification' name='classificationId'><option>Choose Car Classification</option>";
 foreach ($classifications as $classification) {
     $classificationList .= "<option value=$classification[classificationId]>$classification[classificationName]</option>";
 }
@@ -64,6 +64,36 @@ $classificationList .= "</select>";
             break;
         case 'addvehicle':
             include '../view/add-vehicle.php';
+            break;
+        case 'addVehicle':
+            $invMake = filter_input(INPUT_POST, 'invMake');
+            $invModel = filter_input(INPUT_POST, 'invModel');
+            $invDescription = filter_input(INPUT_POST, 'invDescription');
+            $invImage = filter_input(INPUT_POST, 'invImage');
+            $invThumbnail = filter_input(INPUT_POST, 'invThumbnail');
+            $invPrice = filter_input(INPUT_POST, 'invPrice');
+            $invStock = filter_input(INPUT_POST, 'invStock');
+            $invColor = filter_input(INPUT_POST, 'invColor');
+            $classificationId = filter_input(INPUT_POST, 'classificationId');
+            
+            if (empty($invMake) || empty($invModel) || empty($invDescription) || empty($invImage) || empty($invThumbnail) || empty($invPrice) || empty($invStock) || empty($invColor) || empty($classificationId)){
+                $message = '<p>Please, provide the required information</p>';
+                include '../view/add-vehicle.php';
+                exit;
+            }
+            $insrtVclOut = addVehicle($invMake, $invModel, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invColor, $classificationId);
+            if ($insrtVclOut === 1){
+                $message = "<p>$invMake $invModel successfully added.</p>";
+                include '../view/vehicle-management.php';
+                exit;
+            }else{
+                $message = "<p>An error occured and $invMake $invModel was not added. Please, try again.</p>";
+                include '../view/add-vehicle.php';
+                exit;
+            }
+            
+            break;
+            
             break;
         default:
             include '../view/vehicle-management.php';

@@ -31,10 +31,10 @@
                 <input type="text" id="invDescription" name="invDescription"></input>
             </label>
             <label for="invImage">Image path:
-                <input type="text" id="invImage" name="invImage"></input>
+                <input type="text" id="invImage" name="invImage" value="/phpmotors/images/no-image.png"></input>
             </label>
             <label for="invThumbnail">Thumbnail path:
-                <input type="text" id="invThumbnail" name="invThumbnail"></input>
+                <input type="text" id="invThumbnail" name="invThumbnail" value="/phpmotors/images/no-image.png"></input>
             </label>
             <label for="invPrice">Price:
                 <input type="text" id="invPrice" name="invPrice"></input>
@@ -46,6 +46,7 @@
                 <input type="text" id="invColor" name="invColor"></input>
             </label>
             <button type="submit" id="addClasificationName">Add</button>
+            <input type="hidden" name="action" value="addVehicle">
             </form>
         </main>
             <?php require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/footer.php';?>
