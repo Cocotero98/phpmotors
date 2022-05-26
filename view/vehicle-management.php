@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, intial-scale=1">
         <meta name="description" content="Agustin Aguilar's PHP Motors website project"> 
-        <title>Template | PHP Motors</title>
+        <title>Management | PHP Motors</title>
         <link href="/phpmotors/css/base.css" rel="stylesheet"  type = "text/css">
         <link href="/phpmotors/css/medium.css" rel="stylesheet"  type = "text/css">
         <link href="/phpmotors/css/large.css" rel="stylesheet" type="text/css">

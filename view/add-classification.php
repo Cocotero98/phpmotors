@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, intial-scale=1">
         <meta name="description" content="Agustin Aguilar's PHP Motors website project"> 
-        <title>Template | PHP Motors</title>
+        <title>Add Classification | PHP Motors</title>
         <link href="/phpmotors/css/base.css" rel="stylesheet"  type = "text/css">
         <link href="/phpmotors/css/medium.css" rel="stylesheet"  type = "text/css">
         <link href="/phpmotors/css/large.css" rel="stylesheet" type="text/css">
@@ -24,7 +24,7 @@
             ?>
             <form method="post" action="/phpmotors/vehicles/index.php">
             <label for="classificationName">Classification Name:
-                <input type="text" id="classificationName" name="classificationName" value="Lemons"></input>
+                <input type="text" id="classificationName" name="classificationName" value="Lemons">
             </label>
             <button type="submit" id="addClasificationName">Add</button>
             <input type="hidden" name="action" value="addClassification">

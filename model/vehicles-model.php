@@ -8,8 +8,8 @@ function addClassification($classificationName){
     VALUES (:classificationName)';
     // The next line creates the prepared statement using the phpmotors connection. It uses the "prepare" method from the connection object    
     $stmt = $db->prepare($sql);
-    // The next four lines replace the placeholders in the SQL
-    // statement with the actual values in the variables
+    // The next line replaces the placeholder in the SQL
+    // statement with the actual value in the variable
     // and tells the database the type of data it is
     $stmt->bindValue(':classificationName', $classificationName, PDO::PARAM_STR);
     // The next line runs the prepared statement we created in last line
