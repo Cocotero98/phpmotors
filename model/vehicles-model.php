@@ -1,5 +1,5 @@
 <?php
-//Main PHPMotors model
+//Vehicles PHPMotors model
 function addClassification($classificationName){
     // Create a connection object from the phpmotors connection function
     $db = phpmotorsConnect(); 

@@ -1,9 +1,9 @@
 <?php
     /*PHPMotors vehicles controller
-    * This file is accessed at http://lvh.me/phpmotors/
-    * or at http://lvh.me/phpmotors/index.php
+    * This file is accessed at http://lvh.me/phpmotors/vehicles
+    * or at http://lvh.me/phpmotors/vehicles/index.php
     *
-    * This file controls all traffic to the http://lvh.me/phpmotors/URL
+    * This file controls all traffic to the http://lvh.me/phpmotors/vehicles/URL
     */
 
 // Get the database connection file 
