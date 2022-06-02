@@ -53,7 +53,7 @@ $classificationList .= "</select>";
             $insertOutcome = addClassification($classificationName);
             if ($insertOutcome === 1){
                 $message = "<p>$classificationName successfully added.</p>";
-                include '../view/vehicle-management.php';
+                header('Location: /phpmotors/vehicles');//include '../view/vehicle-management.php';
                 exit;
             }else{
                 $message = "<p>An error occured and $classificationName was not added. Please, try again.</p>";
@@ -84,7 +84,7 @@ $classificationList .= "</select>";
             $insrtVclOut = addVehicle($invMake, $invModel, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invColor, $classificationId);
             if ($insrtVclOut === 1){
                 $message = "<p>$invMake $invModel successfully added.</p>";
-                include '../view/vehicle-management.php';
+                header('Location: /phpmotors/vehicles');//include '../view/vehicle-management.php';
                 exit;
             }else{
                 $message = "<p>An error occured and $invMake $invModel was not added. Please, try again.</p>";
