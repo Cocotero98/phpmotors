@@ -22,15 +22,17 @@
             echo $message;
             }
             ?>
-            <form>
+            <form method="post" action="/phpmotors/accounts/index.php">
                 <fieldset>
                     <label for="clientEmail">Email
-                        <input type="email" name="clientEmail" id="clientEmail" required>
+                    <input type="email" name="clientEmail" id="clientEmail" <?php if(isset($clientEmail)){echo "value='$clientEmail'";}  ?> required>
                     </label>
                     <label for="clientPassword">Password
-                        <input type="password" name="clientPassword" id="clientPassword" required>
+                    <span>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</span> 
+                        <input type="password" name="clientPassword" id="clientPassword" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
                     </label>
-                    <button type="submit">Login</button>
+                    <button type="submit" name="submit">Login</button>
+                    <input type="hidden" name="action" value="Login">
                 </fieldset>
             </form>
             <p id='sign-up'>No account?
