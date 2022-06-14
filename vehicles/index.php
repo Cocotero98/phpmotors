@@ -36,7 +36,7 @@ $navList = createNav($classifications);
             include '../view/add-classification.php';
             break;
         case 'addClassification':
-            $classificationName = filter_input(INPUT_POST, 'classificationName'); 
+            $classificationName = filter_input(INPUT_POST, 'classificationName', FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
             if (empty($classificationName)){
                 $message = '<p>Please, provide the required information</p>';
                 include '../view/add-classification.php';
