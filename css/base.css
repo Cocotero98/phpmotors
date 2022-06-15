@@ -241,6 +241,10 @@ form select{
 .classification-main form button:hover{
     background-color: #4c96d7;
 }
-/* input:invalid{
-    border: 1px solid red;
-} */
+header span{
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: right;
+    align-self: center;
+    display: none;
+}

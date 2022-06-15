@@ -79,4 +79,7 @@
     .classification-main{
         margin: 10px auto;
     }
+    header span{
+        display: block;
+    }
 }
