@@ -79,7 +79,19 @@
     .classification-main{
         margin: 10px auto;
     }
-    header span{
+    #welcomeMessage{
         display: block;
+        width: unset;
+        margin: 0;
+    }
+    header a{
+        margin: 0;
+    }
+    #admin-main{
+        display: block;
+        margin: 30px;
+    }
+    #admin-main p a{
+        
     }
 }

@@ -113,10 +113,19 @@ $navList = createNav($classifications);
             array_pop($clientData);
             // Store the array into the session
             $_SESSION['clientData'] = $clientData;
+            // Set welcome message
+            $_SESSION['welcomeMessage'] = "Welcome ".$_SESSION['clientData']['clientFirstname'];
             // Send them to the admin view
             include '../view/admin.php';
             exit;
             break;
+        case 'logout':
+            session_unset();
+            session_destroy();
+            header('Location: /phpmotors/');
+            break;
         default:
+            include '../view/admin.php';
+            exit;
             break;
     }

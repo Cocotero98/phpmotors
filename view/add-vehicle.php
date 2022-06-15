@@ -1,4 +1,9 @@
 <?php
+// Check if client has access to this view
+if(!isset($_SESSION['loggedin']) || $_SESSION['clientData']['clientLevel'] <= 1){
+    header('Location: /phpmotors/');
+}
+
 $classificationList = "<select id='classification' name='classificationId'>";
 foreach ($classifications as $classification) {
     $classificationList .= "<option value=$classification[classificationId]";

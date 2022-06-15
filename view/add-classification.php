@@ -1,4 +1,9 @@
-<!DOCTYPE HTML>
+<?php
+// Check if client has access to this view
+if(!isset($_SESSION['loggedin']) || $_SESSION['clientData']['clientLevel'] <= 1){
+    header('Location: /phpmotors/');
+}
+?><!DOCTYPE HTML>
 <html lang="en">
     <head>
         <meta charset="utf-8">

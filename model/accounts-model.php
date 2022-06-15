@@ -48,6 +48,7 @@ function checkExistingEmail($emailSubmitted){
     } else {
      return 1;
     }
+}
 function getClient($clientEmail){
     $db = phpmotorsConnect();
     $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword FROM clients WHERE clientEmail = :clientEmail';
@@ -57,5 +58,4 @@ function getClient($clientEmail){
     $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
     return $clientData;
-}
 }
