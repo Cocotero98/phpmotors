@@ -264,3 +264,9 @@ form select{
     padding-left: 20px;
     margin: 30px 0;
 }
+#classificationList{
+    grid-column: 1/3;
+}
+#inventoryDisplay{
+    grid-column: 1/3;
+}
