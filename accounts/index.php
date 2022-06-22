@@ -102,6 +102,7 @@ $navList = createNav($classifications);
             // and return to the login view
             if(!$hashCheck) {
             $message = '<p class="notice">Please check your password and try again.</p>';
+            $_SESSION['message'] = $message;
             include '../view/login.php';
             exit;
             }
@@ -156,6 +157,7 @@ $navList = createNav($classifications);
                 $clientData = getClientById($clientId);
                 array_pop($clientData);
                 $_SESSION['clientData'] = $clientData;
+                $_SESSION['welcomeMessage'] = "Welcome ".$_SESSION['clientData']['clientFirstname'];
                 header('location: /phpmotors/accounts/');
                 exit;
             }else{
