@@ -124,6 +124,79 @@ $navList = createNav($classifications);
             session_destroy();
             header('Location: /phpmotors/');
             break;
+        case 'update':
+            include '../view/client-update.php';
+            break;
+        case 'accountUpdate':
+            $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+            $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+            $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
+            $clientId = filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT);
+            $clientEmail = checkEmail($clientEmail);
+            if($clientEmail!=$_SESSION['clientData']['clientEmail']){
+                $emailExists = checkExistingEmail($clientEmail);
+                if($emailExists){
+                $mesagge = '<p class="notice">That email address already exists. Please, try another one.</p>';
+                $_SESSION['accountMesagge'] = $mesagge;
+                include '../view/client-update.php';
+                exit;
+                }
+            }
+            if(empty($clientFirstname) || empty($clientLastname) || empty($clientEmail)){
+                $message = '<p>Please provide information for all empty form fields.</p>';
+                $_SESSION['accountMesagge'] = $message;
+                include '../view/client-update.php';
+                exit; 
+            }
+            $updateResult = updateAccount($clientFirstname,$clientLastname,$clientEmail,$clientId);
+            if($updateResult){
+                $message = "<p class='notify'>Congratulations, your account was successfully updated.</p>";
+                $_SESSION['message'] = $message;
+                unset($_SESSION['accountMesagge']);
+                $clientData = getClientById($clientId);
+                array_pop($clientData);
+                $_SESSION['clientData'] = $clientData;
+                header('location: /phpmotors/accounts/');
+                exit;
+            }else{
+                $message = "<p>An error occured and your account was not updated. Please, try again.</p>".$updateResult;
+                $_SESSION['accountMesagge'] = $message;
+                include '../view/client-update.php';
+                exit;
+            }
+            break;
+        case 'changePassword':
+            $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+            $clientId = filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT);
+            $checkPassword = checkPassword($clientPassword);
+            if(empty($clientPassword)){
+                $message = '<p>Please provide information for all empty form fields.</p>';
+                $_SESSION['pwdMesagge'] = $message;
+                include '../view/client-update.php';
+                exit; 
+            }
+            if(empty($checkPassword)){
+                $message = '<p>Please provide a valid password.</p>';
+                $_SESSION['pwdMesagge'] = $message;
+                include '../view/client-update.php';
+                exit; 
+            }
+            $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+            $pwdResult = changePassword($clientId, $hashedPassword);
+            if($pwdResult){
+                $message = 'Your password has been changed';
+                $_SESSION['message'] = $message;
+                include '../view/admin.php';
+                unset($_SESSION['message']);
+                exit;
+            }
+            else{
+                $message = '<p>An error occurred and your password has not been changed. Please, try again.</p>';
+                $_SESSION['pwdMesagge'] = $message;
+                include '../view/client-update.php';
+                exit;
+            }
+            break;
         default:
             include '../view/admin.php';
             exit;

@@ -21,14 +21,24 @@ if(!isset($_SESSION['loggedin'])){
         </header>
         <main id="admin-main">
             <h1>Logged in <?php $_SESSION['clientData']['clientFirstname']." ".$_SESSION['clientData']['clientLastname'] ?></h1>
+            <p>You are logged in.</p>
+            <?php
+            if (isset($_SESSION['message'])) {
+                echo $_SESSION['message'];
+               }
+            ?>
             <ul>
                 <li>First name: <?php echo $_SESSION['clientData']['clientFirstname'] ?></li>
                 <li>Last name: <?php echo $_SESSION['clientData']['clientLastname'] ?></li>
                 <li>Email address: <?php echo $_SESSION['clientData']['clientEmail'] ?></li>
-                <li>Level: <?php echo $_SESSION['clientData']['clientLevel'] ?></li>
             </ul>
+            <h3>Account Management</h3>
+            <p>Use this link to update your account information.</p>
+            <p><a href="index.php?action=update">Update Account Information</a></p>
             <?php if($_SESSION['clientData']['clientLevel'] > 1){
-                echo '<p><a href="/phpmotors/vehicles/">Vehicle Management</a></p>';
+                echo '<h3>Vehicles Management</h3>
+                <p>Use this link to manage the inventory.</p>
+                <p><a href="/phpmotors/vehicles/">Vehicle Management</a></p>';
             } ?>
         </main>
             <?php require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/footer.php';?>
