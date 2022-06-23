@@ -24,7 +24,7 @@
                 <h3>DMC Delorean</h3>
                 <p>3 Cup holders<br>Superman doors<br>Fuzzy dice!</p>
             </div>
-            <img src="images/delorean.jpg" alt="Delorean car">
+            <img src="images/vehicles/delorean.jpg" alt="Delorean car">
             <a href="">Own Today</a>
         </div>
         <div class="delorean-reviews">
