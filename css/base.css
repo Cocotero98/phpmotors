@@ -279,7 +279,7 @@ form select{
     padding: 0;
     display: flex;
     flex-direction: column;
-
+    gap: 10px;
    }
    
    #inv-display li{
@@ -292,3 +292,23 @@ form select{
    #inv-display li img {
        max-width: 100%;
    }
+#car-details a{
+    display: block;
+    text-decoration: none;
+    background-color: #4c96d7;
+    /* border: 1px solid #3a3a3a; */
+    padding: 10px;
+    margin: 15px;
+    margin-left: 0;
+    width: 80px;
+    text-align: center;
+    font-weight: bolder;
+    color: black;
+    font-size: larger;
+}
+#car-details a:hover{
+    box-shadow: 1px 1px 10px #4c96d7;
+}
+#car-details img{
+    width: 100%;
+}

@@ -130,3 +130,13 @@ function getVehiclesByClassification($classificationName){
     $stmt->closeCursor();
     return $vehicles;
    }
+function getVehicleDetails($invId){
+    $db = phpmotorsConnect();
+    $sql = 'SELECT * FROM inventory WHERE invId = :invId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
+    $stmt->execute();
+    $details = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $details;   
+}

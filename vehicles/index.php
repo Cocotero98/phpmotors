@@ -185,6 +185,15 @@ $navList = createNav($classifications);
             }
             include '../view/classification.php';
             break;
+        case 'details':
+            $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
+            $details = getVehicleDetails($invId);
+            if(!count($details)){
+                $message = '<p>Sorry, vehicle not found.</p>';
+            }
+            $detailsDisplay = buildDetailsDisplay($details);
+            include '../view/vehicle-detail.php';
+            break;
         default:
             $classificationList = buildClassificationList($classifications);
 

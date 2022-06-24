@@ -43,12 +43,25 @@ function buildVehiclesDisplay($vehicles){
    $dv = '<ul id="inv-display">';
    foreach ($vehicles as $vehicle) {
     $dv .= '<li>';
-    $dv .= "<img src='$vehicle[invThumbnail]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
+    $dv .= "<a href='/phpmotors/vehicles/?action=details&invId=$vehicle[invId]'><img src='$vehicle[invThumbnail]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
     $dv .= '<hr>';
-    $dv .= "<h2>$vehicle[invMake] $vehicle[invModel]</h2>";
+    $dv .= "<h2>$vehicle[invMake] $vehicle[invModel]</h2></a>";
     $dv .= "<span>$vehicle[invPrice]</span>";
     $dv .= '</li>';
    }
    $dv .= '</ul>';
    return $dv;
   }
+
+  function buildDetailsDisplay($details){
+   $detail = $details[0];
+   $dd = "<img src=$detail[invImage] alt='$detail[invMake] $detail[invModel]'>";
+   $dd .="<div><h1>$detail[invMake] $detail[invModel]</h1>";
+   $dd .= "<h2>$".number_format($detail['invPrice'],0)."</h2>";
+   $dd .= "<p>$detail[invDescription]</p>";
+   $dd .= "<p>Color: $detail[invColor]</p>";
+   $dd .= "<p>Stock: $detail[invStock]</p>";
+   $dd .= "<a href='/phpmotors/vehicles/?action=details&invId=$detail[invId]'>Buy Now</a></div>";
+   return $dd;
+   }
+  
