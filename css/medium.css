@@ -124,4 +124,7 @@
         margin: 30px;
         margin-top: 20px;
     }
+    #uploads {
+        display: block;
+    }
 }

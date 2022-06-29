@@ -312,3 +312,23 @@ form select{
 #car-details img{
     width: 100%;
 }
+#uploads li{
+    list-style: none;
+}
+#uploads form select{
+    margin-bottom: 10px;
+}
+#uploads a{
+    display: block;
+    text-decoration: none;
+    background-color: #4c96d7;
+    padding: 10px;
+    text-align: center;
+    color: black;
+    width: fit-content;
+    border-radius: 5px;
+    font-weight: bolder;
+}
+#uploads a:hover{
+    box-shadow: 1px 1px 10px #4c96d7;
+}
