@@ -115,14 +115,25 @@
 	}
     #car-details img{
         grid-row: 2;
+        grid-column: 2;
     }
     #car-details div{
         grid-row: 2;
-        grid-column: 2;
     }
     #car-details{
         margin: 30px;
         margin-top: 20px;
+        grid-template-columns: 0.5fr 1.5fr 1fr;
+    }
+    #car-details li img{
+        grid-column: 1;
+        max-width: unset;
+    }
+    #large-view-tn{
+        display: block;
+    }
+    #small-view-tn{
+        display: none;
     }
     #uploads {
         display: block;

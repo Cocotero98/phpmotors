@@ -22,9 +22,18 @@
         <?php if(isset($message)){
                 echo $message;
             } ?>
+            <div id='large-view-tn'>
+            <?php if(isset($tnDisplay)){
+                echo $tnDisplay;
+            } ?></div>
             <?php if(isset($detailsDisplay)){
                 echo $detailsDisplay;
             } ?>
+            <div id='small-view-tn'>
+            <h3>Vehicle Thumbnails</h3>
+            <?php if(isset($tnDisplay)){
+                echo $tnDisplay;
+            } ?></div>
         </main>
             <?php require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/footer.php';?>
 </div>

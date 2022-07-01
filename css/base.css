@@ -108,7 +108,7 @@ main{
 .delorean-upgrades{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap:10px
+    gap:5px
 }
 .delorean-upgrades h2{
     grid-row: 1;
@@ -310,7 +310,26 @@ form select{
     box-shadow: 1px 1px 10px #4c96d7;
 }
 #car-details img{
-    width: 100%;
+    max-width: 100%;
+}
+#car-details ul{
+    padding: 0;
+    gap: 10px;
+}
+#car-details li{
+    list-style: none;
+}
+#car-details li img{
+    transition: .2s;
+}
+#car-details li img:hover{
+    transform: scale(1.5);
+}
+#large-view-tn{
+    display: none;
+}
+#small-view-tn ul{
+    display: flex;
 }
 #uploads li{
     list-style: none;

@@ -43,7 +43,7 @@ function buildVehiclesDisplay($vehicles){
    $dv = '<ul id="inv-display">';
    foreach ($vehicles as $vehicle) {
     $dv .= '<li>';
-    $dv .= "<a href='/phpmotors/vehicles/?action=details&invId=$vehicle[invId]'><img src='$vehicle[invThumbnail]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
+    $dv .= "<a href='/phpmotors/vehicles/?action=details&invId=$vehicle[invId]'><img src='$vehicle[imgPath]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
     $dv .= '<hr>';
     $dv .= "<h2>$vehicle[invMake] $vehicle[invModel]</h2></a>";
     $dv .= "<span>$vehicle[invPrice]</span>";
@@ -222,3 +222,13 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
     // Free any memory associated with the old image
     imagedestroy($old_image);
   } // ends resizeImage function
+
+  // Build Thumbnails display for vehicle details
+  function buildTnDisplay($tnImages){
+   $thumbnailsDisplay = '<ul>';
+   foreach ($tnImages as $image) {
+      $thumbnailsDisplay .='<li><img src="'.$image['imgPath'].'" alt="'."$image[invMake] $image[invModel]".' image"></li>';
+   }
+   $thumbnailsDisplay .= '</ul>';
+   return $thumbnailsDisplay;
+  }

@@ -122,7 +122,7 @@ function deleteItem($invId){
 // This function gets a list of vehicles based on the classification.
 function getVehiclesByClassification($classificationName){
     $db = phpmotorsConnect();
-    $sql = 'SELECT * FROM inventory WHERE classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName)';
+    $sql = 'SELECT * FROM images JOIN inventory ON images.invId = inventory.invId WHERE imgPath LIKE "%-tn%" AND imgPrimary = 1 AND classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName)';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':classificationName', $classificationName, PDO::PARAM_STR);
     $stmt->execute();
@@ -132,7 +132,7 @@ function getVehiclesByClassification($classificationName){
    }
 function getVehicleDetails($invId){
     $db = phpmotorsConnect();
-    $sql = 'SELECT * FROM inventory WHERE invId = :invId';
+    $sql = 'SELECT * FROM images JOIN inventory ON images.invId = inventory.invId WHERE imgPrimary = 1 AND imgPath NOT LIKE "%-tn%" AND inventory.invId = :invId';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
     $stmt->execute();
