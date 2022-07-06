@@ -39,11 +39,17 @@
             <?php if(isset($_SESSION['loggedin'])){
                 if(isset($reviewForm)){
                     echo "<h3>Review the $detail[invMake] $detail[invModel]</h3>";
+                    if(isset($_SESSION['message'])){
+                        echo $_SESSION['message'];
+                    };
                     echo $reviewForm;
                 }
             }else{
                 echo '<p>You most <a href="/phpmotors/accounts/index.php?action=login">loggin</a> to add a review.</p>';
             } 
+            if(isset($reviewsSection)){
+                echo $reviewsSection;
+            }
             ?>
             </div>
         </main>

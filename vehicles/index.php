@@ -19,6 +19,9 @@ require_once '../model/vehicles-model.php';
 require_once '../library/functions.php';
 // Get the uploads model
 require_once '../model/uploads-model.php';
+// Get the reviews model
+require_once '../model/reviews-model.php';
+
 
 // Get the array of classifications
 $classifications = getClassifications();
@@ -26,9 +29,7 @@ $classifications = getClassifications();
 // Build a navigation bar using the $classifications array
 $navList = createNav($classifications);
 
-if(isset($_SESSION['clientData'])){
-    $reviewForm=buildReviewForm($_SESSION['clientData']['clientFirstname'],$_SESSION['clientData']['clientLastname']);
-}
+
 
 
 //
@@ -201,6 +202,11 @@ if(isset($_SESSION['clientData'])){
             }
             $detailsDisplay = buildDetailsDisplay($details);
             $tnDisplay = buildTnDisplay($tnImages);
+            $reviews = getReviews($invId);
+            if(isset($_SESSION['clientData'])){
+                $reviewForm=buildReviewForm($_SESSION['clientData']['clientFirstname'],$_SESSION['clientData']['clientLastname'],$_SESSION['clientData']['clientId'],$invId);
+            }
+            $reviewsSection = displayReviews($reviews,'nameAndReview');
             include '../view/vehicle-detail.php';
             break;
         default:

@@ -18,7 +18,7 @@ function insertReview($clientId, $invId, $reviewText){
 //Get reviews for a specific inventory item 
 function getReviews($invId){
     $db = phpmotorsConnect();
-    $sql = 'SELECT FROM reviews WHERE invId = :invId';
+    $sql = 'SELECT * FROM reviews JOIN clients ON clients.clientId = reviews.clientId WHERE invId = :invId';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
     $stmt->execute();
@@ -30,7 +30,7 @@ function getReviews($invId){
 //Get reviews written by a specific client 
 function getClientReviews($clientId){
     $db = phpmotorsConnect();
-    $sql = 'SELECT FROM reviews WHERE clientId = :clientId';
+    $sql = 'SELECT * FROM reviews JOIN inventory on reviews.invId = inventory.invId WHERE clientId = :clientId';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
     $stmt->execute();
@@ -42,7 +42,7 @@ function getClientReviews($clientId){
 //Get a specific review 
 function getReview($reviewId){
     $db = phpmotorsConnect();
-    $sql = 'SELECT FROM reviews WHERE reviewId = :reviewId';
+    $sql = 'SELECT * FROM reviews JOIN inventory on reviews.invId = inventory.invId WHERE reviewId = :reviewId';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':reviewId', $reviewId, PDO::PARAM_INT);
     $stmt->execute();
@@ -54,7 +54,7 @@ function getReview($reviewId){
 //Update a specific review
 function updateReview($reviewId, $reviewText){
     $db = phpmotorsConnect();
-    $sql = 'UPDATE reviews SET reviewText = :reviewText WHERE reviewId = :reviewId';
+    $sql = 'UPDATE reviews SET reviewText = :reviewText WHERE reviews.reviewId = :reviewId';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':reviewId', $reviewId, PDO::PARAM_INT);
     $stmt->bindValue(':reviewText', $reviewText, PDO::PARAM_STR);

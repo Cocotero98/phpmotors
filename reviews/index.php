@@ -26,34 +26,56 @@ $navList = createNav($classifications);
     
     switch ($action){
         case 'addNew':
-            $clientId = $_SESSION['clientData']['clientId'];
-            $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
+            $clientId = filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT);
+            $invId = filter_input(INPUT_POST, 'invId', FILTER_SANITIZE_NUMBER_INT);
             $reviewText = trim(filter_input(INPUT_POST, 'reviewText', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
 
             //Check if variables are empty 
-            if(empty($reviewText)|$invId!='asdf'){
-                $_SESSION['message'] = '<p>Please, write a review before submitting</p>'.$invId;
-                include '../view/vehicle-detail.php';
+            if(empty($reviewText) ){
+                $_SESSION['message'] = '<p>Please, write a review before submitting</p>';
+                header('Location: /phpmotors/vehicles/index.php?action=details&invId='.$invId);
                 exit;
             }
             $reviewAdded = insertReview($clientId, $invId, $reviewText);
             if($reviewAdded){
                 $_SESSION['message'] = '<p>Review successfully added.</p>';
-                include '../view/vehicle-detail.php';
+                header('Location: /phpmotors/vehicles/index.php?action=details&invId='.$invId);
+                exit;
+            }else{
+                $_SESSION['message'] = '<p>Sorry, something went wrong. Review not added. Please try again.</p>';
+                header('Location: /phpmotors/vehicles/index.php?action=details&invId='.$invId);
                 exit;
             }
-
-
             break;
         case 'editReview':
+            $reviewId = filter_input(INPUT_GET, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
+            $review = getReview($reviewId);
+            if(!count($review)){
+                $message = '<p>Sorry, review not found.</p>';
+                include '/phpmotors/accounts/';
+                exit;
+            }
+            $editableReview = editReviewForm($review);
+            include '../view/update-review.php';
             break;
-        case 'reviewEdited':
+        case 'confirmedEdit':
+            $reviewId = filter_input(INPUT_POST, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
+            $reviewText = filter_input(INPUT_POST, 'reviewText', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $result = updateReview($reviewId, $reviewText);
+            if($result){
+                $_SESSION['message'] = 'Review successfully updated.';
+                header('Location: /phpmotors/accounts/');
+            }else{
+                $_SESSION['message'] = 'An error occured. Review not updated. Please, try again.';
+                include '../view/update-review.php';
+            }
             break;
         case 'confirmDel':
             break;
         case 'reviewDeleted':
             break;
         default:
+            
             break;
 
     }

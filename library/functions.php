@@ -234,20 +234,90 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
   }
 
   //Build review form
-  function buildReviewForm($clientFirstname,$clientLastname){
-   $initial = substr($clientFirstname,0);
+  function buildReviewForm($clientFirstname,$clientLastname,$clientId,$invId){
+   $initial = substr($clientFirstname,0,1);
    $screenName = $initial . $clientLastname;
    $form = "<form method='post' action='/phpmotors/reviews/index.php'>
                <fieldset>
                <label for='screenName'>Screen name: 
                   <input type='text' readonly value='$screenName'>
                </label>
-               <label for='review'>Review: 
+               <label for='review'>Review:'
                   <textarea id='review' name='reviewText'></textarea>
                </label>
                <button type='submit' id='addNewReview' required>
                <input type='hidden' name='action' value='addNew'>
+               <input type='hidden' name='invId' value='.$invId.'>
+               <input type='hidden' name='clientId' value='.$clientId.'>
                </fieldset>
             </form>";
    return $form;
+  }
+  function displayReviews($reviews, $callback){
+   $reviewsArray = [];
+   $oldestDate = 0;
+   $counter = $reviews;
+   for ($i = 0 ; $i < count($counter); $i++){
+   foreach($reviews as $review){
+      $reviewDate = strtotime($review['reviewDate']);
+      if($reviewDate>$oldestDate){
+         $oldestDate = $reviewDate;
+      }
+   }
+   foreach($reviews as $review){
+      $reviewDate = strtotime($review['reviewDate']);
+      if ($reviewDate===$oldestDate){
+         array_push($reviewsArray,$review);
+         $index = array_search($review,$reviews);
+         unset($reviews[$index]);
+         $oldestDate = 0;
+      }
+   }
+   }
+   $section = $callback($reviewsArray);
+   return $section;
+}
+
+function nameAndReview($reviewsArray){
+   $reviewsSection = '';
+foreach($reviewsArray as $review){
+      $reviewDate = date('F j, Y, g:i a',strtotime($review['reviewDate']));
+      $initial = substr($review['clientFirstname'],0,1);
+      $screenName = $initial . $review['clientLastname'];
+      $reviewsSection.='<div><p>'.$screenName.' wrote on '.$reviewDate.':<br><span>'.$review['reviewText'].'</span></p></div>';
+      
+   }
+   return $reviewsSection;
+  }
+
+  function editableReview($reviewsArray){
+   $reviewsSection = '<h3>Manage your products reviews</h3><ul>';
+   foreach($reviewsArray as $review){
+      $reviewDate = date('F j, Y, g:i a',strtotime($review['reviewDate']));
+      $invName = "$review[invModel] $review[invMake]";
+      $reviewsSection.='<li>'.$invName.' (reviewd on '.$reviewDate.'): 
+      <a href="/phpmotors/reviews/index.php?action=editReview&reviewId='.$review['reviewId'].'">Edit</a> 
+      <a href="/phpmotors/reviews/index.php?action=confirmDel&reviewId='.$review['reviewId'].'">Delete</a>
+      </li>';  
+   }
+   $reviewsSection .= '</ul>';
+   return $reviewsSection;
+  }
+
+  function editReviewForm($review){
+   $review = $review[0];
+   $reviewDate = date('F j, Y, g:i a',strtotime($review['reviewDate']));
+   $display = "<h2>$review[invModel] $review[invMake] Review</h2>";
+   $display .= "<h3>Reviewed on $reviewDate";
+   $display .= "<form method='post' action='/phpmotors/reviews/index.php'>
+                  <fieldset>
+                     <label for=''>Review Text
+                        <textarea id='reviewText' name='reviewText'>$review[reviewText]</textarea>
+                     </label>
+                     <button type='submit' id='updateReview'>Update</button>
+                     <input type='hidden' name='action' value='confirmedEdit'>
+                     <input type='hidden' name='reviewId' value='".$review['reviewId']."'>
+                  </fieldset>
+               </form>";
+               return $display;
   }
