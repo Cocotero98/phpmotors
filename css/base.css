@@ -351,3 +351,22 @@ form select{
 #uploads a:hover{
     box-shadow: 1px 1px 10px #4c96d7;
 }
+#car-details .reviews{
+    grid-row: 3;
+    /* display: none; */
+    border-top: 5px solid;
+    grid-column: 1/4;
+}
+#car-details .reviews a{
+    border: none;
+    background-color: transparent;
+    display: inline;
+    padding: 0 2px;
+    margin: 0;
+    color: #113083;
+    text-decoration: underline;
+}
+#car-details .reviews a:hover{
+    text-shadow: #3a3a3a 1px 1px 3px;
+    box-shadow:none;
+}

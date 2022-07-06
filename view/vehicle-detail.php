@@ -34,6 +34,18 @@
             <?php if(isset($tnDisplay)){
                 echo $tnDisplay;
             } ?></div>
+            <div class='reviews'>
+            <h3>Customer reviews</h3>
+            <?php if(isset($_SESSION['loggedin'])){
+                if(isset($reviewForm)){
+                    echo "<h3>Review the $detail[invMake] $detail[invModel]</h3>";
+                    echo $reviewForm;
+                }
+            }else{
+                echo '<p>You most <a href="/phpmotors/accounts/index.php?action=login">loggin</a> to add a review.</p>';
+            } 
+            ?>
+            </div>
         </main>
             <?php require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/footer.php';?>
 </div>

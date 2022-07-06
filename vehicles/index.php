@@ -26,6 +26,11 @@ $classifications = getClassifications();
 // Build a navigation bar using the $classifications array
 $navList = createNav($classifications);
 
+if(isset($_SESSION['clientData'])){
+    $reviewForm=buildReviewForm($_SESSION['clientData']['clientFirstname'],$_SESSION['clientData']['clientLastname']);
+}
+
+
 //
 
 

@@ -232,3 +232,22 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
    $thumbnailsDisplay .= '</ul>';
    return $thumbnailsDisplay;
   }
+
+  //Build review form
+  function buildReviewForm($clientFirstname,$clientLastname){
+   $initial = substr($clientFirstname,0);
+   $screenName = $initial . $clientLastname;
+   $form = "<form method='post' action='/phpmotors/reviews/index.php'>
+               <fieldset>
+               <label for='screenName'>Screen name: 
+                  <input type='text' readonly value='$screenName'>
+               </label>
+               <label for='review'>Review: 
+                  <textarea id='review' name='reviewText'></textarea>
+               </label>
+               <button type='submit' id='addNewReview' required>
+               <input type='hidden' name='action' value='addNew'>
+               </fieldset>
+            </form>";
+   return $form;
+  }
