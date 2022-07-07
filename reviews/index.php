@@ -60,19 +60,44 @@ $navList = createNav($classifications);
             break;
         case 'confirmedEdit':
             $reviewId = filter_input(INPUT_POST, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
-            $reviewText = filter_input(INPUT_POST, 'reviewText', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $reviewText = trim(filter_input(INPUT_POST, 'reviewText', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+            if(empty($reviewText)){
+                $_SESSION['message'] = 'The review field was empty, so the review was not updated.';
+                header('Location: /phpmotors/reviews/index.php?action=editReview&reviewId='.$reviewId.'');
+                exit;
+            }
             $result = updateReview($reviewId, $reviewText);
             if($result){
                 $_SESSION['message'] = 'Review successfully updated.';
                 header('Location: /phpmotors/accounts/');
             }else{
                 $_SESSION['message'] = 'An error occured. Review not updated. Please, try again.';
-                include '../view/update-review.php';
+                header('Location: /phpmotors/reviews/index.php?action=editReview&reviewId='.$reviewId.'');
             }
             break;
         case 'confirmDel':
+            $reviewId = filter_input(INPUT_GET, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
+            $review = getReview($reviewId);
+            if(!count($review)){
+                $message = '<p>Sorry, review not found.</p>';
+                include '/phpmotors/accounts/';
+                exit;
+            }
+            $reviewToDelete = deleteReviewForm($review);
+            include '../view/update-review.php';
+            break;
             break;
         case 'reviewDeleted':
+            $reviewId = filter_input(INPUT_POST, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
+            $reviewDeleted = deleteReview($reviewId);
+            if($reviewDeleted){
+                $_SESSION['message'] = 'Review successfully deleted';
+                header('Location: /phpmotors/accounts/');
+            }
+            else{
+                $_SESSION['message'] = 'There was an error and the review could not be deleted. Please, try again later.';
+                header('Location: /phpmotors/reviews/index.php?action=confirmDel&reviewId='.$reviewId.'');
+            }
             break;
         default:
             

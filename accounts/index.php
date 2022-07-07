@@ -32,7 +32,7 @@ $classifications = getClassifications();
 $navList = createNav($classifications);
 // echo $navList;
 // Get reviews to display in the admin view
-if($_SESSION['loggedin']){
+if(isset($_SESSION['loggedin'])){
     $clientReviews = getClientReviews($_SESSION['clientData']['clientId']);
     $displayClientReviews = displayReviews($clientReviews,'editableReview');
 }
@@ -123,6 +123,11 @@ if($_SESSION['loggedin']){
             $_SESSION['clientData'] = $clientData;
             // Set welcome message
             $_SESSION['welcomeMessage'] = "Welcome ".$_SESSION['clientData']['clientFirstname'];
+            // Prepare client reviews section
+            if(!isset($clientReviews) | !isset($displayClientReviews)){
+                $clientReviews = getClientReviews($_SESSION['clientData']['clientId']);
+                $displayClientReviews = displayReviews($clientReviews,'editableReview');
+            }
             // Send them to the admin view
             include '../view/admin.php';
             exit;

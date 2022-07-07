@@ -1,4 +1,9 @@
-<!DOCTYPE HTML>
+<?php
+// Check if client has access to this view
+if(!isset($_SESSION['loggedin'])){
+    header('Location: /phpmotors/');
+}
+?><!DOCTYPE HTML>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -15,10 +20,16 @@
             <?php require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/header.php';?>
             <nav><?php echo $navList; ?></nav>
         </header>
-        <main>
+        <main id='reviewsPage'>
             <?php 
+            if(isset($_SESSION['message'])){
+                echo $_SESSION['message'];
+            }
                 if(isset($editableReview)){
                     echo $editableReview;
+                }
+                if(isset($reviewToDelete)){
+                    echo $reviewToDelete;
                 }
             ?>
         </main>

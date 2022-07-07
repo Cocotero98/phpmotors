@@ -40,7 +40,10 @@ if(!isset($_SESSION['loggedin'])){
                 <p>Use this link to manage the inventory.</p>
                 <p><a href="/phpmotors/vehicles/">Vehicle Management</a></p>';
             } 
-            echo $displayClientReviews;?>
+            if(isset($displayClientReviews)){
+                echo $displayClientReviews;
+            }
+            ?>
         </main>
             <?php require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/footer.php';?>
 </div>
