@@ -49,6 +49,11 @@
             } 
             if(isset($reviewsSection)){
                 echo $reviewsSection;
+                if($reviewsSection<1){
+                    echo '<p>Be the first to write a review</p>';
+                }
+            }else{
+                echo '<p>Be the first to write a review</p>';
             }
             ?>
             </div>
@@ -57,3 +62,4 @@
 </div>
     </body>
 </html>
+<?php unset($_SESSION['message']); ?>

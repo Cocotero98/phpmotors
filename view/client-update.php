@@ -66,3 +66,10 @@ if(!isset($_SESSION['loggedin'])){
 </div>
     </body>
 </html>
+<?php if(isset($_SESSION['pwdMesagge'])){
+    unset($_SESSION['pwdMesagge']);
+}
+if(isset($_SESSION['accountMesagge'])){
+    unset($_SESSION['accountMesagge']);
+}
+ ?>

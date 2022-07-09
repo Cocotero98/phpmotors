@@ -165,7 +165,6 @@ if(isset($_SESSION['loggedin'])){
             if($updateResult){
                 $message = "<p class='notify'>Congratulations, your account was successfully updated.</p>";
                 $_SESSION['message'] = $message;
-                unset($_SESSION['accountMesagge']);
                 $clientData = getClientById($clientId);
                 array_pop($clientData);
                 $_SESSION['clientData'] = $clientData;
@@ -201,7 +200,6 @@ if(isset($_SESSION['loggedin'])){
                 $message = 'Your password has been changed';
                 $_SESSION['message'] = $message;
                 include '../view/admin.php';
-                unset($_SESSION['message']);
                 exit;
             }
             else{

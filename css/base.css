@@ -396,3 +396,6 @@ form select{
 .warning{
     color: red;
 }
+textarea{
+    height:150px;
+}

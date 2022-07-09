@@ -245,7 +245,7 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
                <label for='review'>Review:'
                   <textarea id='review' name='reviewText' required></textarea>
                </label>
-               <button type='submit' id='addNewReview'></button>
+               <button type='submit' id='addNewReview'>Add Review</button>
                <input type='hidden' name='action' value='addNew'>
                <input type='hidden' name='invId' value='.$invId.'>
                <input type='hidden' name='clientId' value='.$clientId.'>
@@ -312,7 +312,7 @@ function editableReview($reviewsArray){
 function editReviewForm($review){
    $review = $review[0];
    $reviewDate = date('F j, Y, g:i a',strtotime($review['reviewDate']));
-   $display = "<h2>$review[invModel] $review[invMake] Review</h2>";
+   $display = "<h2>$review[invMake] $review[invModel] Review</h2>";
    $display .= "<h3>Reviewed on $reviewDate</h3>";
    $display .= "<form method='post' action='/phpmotors/reviews/index.php'>
                   <fieldset>
