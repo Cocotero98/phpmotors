@@ -149,15 +149,15 @@ if(isset($_SESSION['loggedin'])){
             if($clientEmail!=$_SESSION['clientData']['clientEmail']){
                 $emailExists = checkExistingEmail($clientEmail);
                 if($emailExists){
-                $mesagge = '<p class="notice">That email address already exists. Please, try another one.</p>';
-                $_SESSION['accountMesagge'] = $mesagge;
+                $message = '<p class="notice">That email address already exists. Please, try another one.</p>';
+                $_SESSION['accountMessage'] = $message;
                 include '../view/client-update.php';
                 exit;
                 }
             }
             if(empty($clientFirstname) || empty($clientLastname) || empty($clientEmail)){
                 $message = '<p>Please provide information for all empty form fields.</p>';
-                $_SESSION['accountMesagge'] = $message;
+                $_SESSION['accountMessage'] = $message;
                 include '../view/client-update.php';
                 exit; 
             }
@@ -173,7 +173,7 @@ if(isset($_SESSION['loggedin'])){
                 exit;
             }else{
                 $message = "<p>An error occured and your account was not updated. Please, try again.</p>".$updateResult;
-                $_SESSION['accountMesagge'] = $message;
+                $_SESSION['accountMessage'] = $message;
                 include '../view/client-update.php';
                 exit;
             }
@@ -184,13 +184,13 @@ if(isset($_SESSION['loggedin'])){
             $checkPassword = checkPassword($clientPassword);
             if(empty($clientPassword)){
                 $message = '<p>Please provide information for all empty form fields.</p>';
-                $_SESSION['pwdMesagge'] = $message;
+                $_SESSION['pwdMessage'] = $message;
                 include '../view/client-update.php';
                 exit; 
             }
             if(empty($checkPassword)){
                 $message = '<p>Please provide a valid password.</p>';
-                $_SESSION['pwdMesagge'] = $message;
+                $_SESSION['pwdMessage'] = $message;
                 include '../view/client-update.php';
                 exit; 
             }
@@ -204,7 +204,7 @@ if(isset($_SESSION['loggedin'])){
             }
             else{
                 $message = '<p>An error occurred and your password has not been changed. Please, try again.</p>';
-                $_SESSION['pwdMesagge'] = $message;
+                $_SESSION['pwdMessage'] = $message;
                 include '../view/client-update.php';
                 exit;
             }

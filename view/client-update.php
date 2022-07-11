@@ -23,8 +23,8 @@ if(!isset($_SESSION['loggedin'])){
             <h1>Manage Account</h1>
             <h3>Account update</h3>
             <?php
-                if (isset($_SESSION['accountMesagge'])) {
-                    echo $_SESSION['accountMesagge'];
+                if (isset($_SESSION['accountMessage'])) {
+                    echo $_SESSION['accountMessage'];
                     }
             ?>
             <form method="post" action="/phpmotors/accounts/index.php">
@@ -45,8 +45,8 @@ if(!isset($_SESSION['loggedin'])){
             </form>
             <h3>Change Password</h3>
             <?php
-                if (isset($_SESSION['pwdMesagge'])) {
-                    echo $_SESSION['pwdMesagge'];
+                if (isset($_SESSION['pwdMessage'])) {
+                    echo $_SESSION['pwdMessage'];
                     }
             ?>
             <form method="post" action="/phpmotors/accounts/index.php">
@@ -66,10 +66,10 @@ if(!isset($_SESSION['loggedin'])){
 </div>
     </body>
 </html>
-<?php if(isset($_SESSION['pwdMesagge'])){
-    unset($_SESSION['pwdMesagge']);
+<?php if(isset($_SESSION['pwdMessage'])){
+    unset($_SESSION['pwdMessage']);
 }
-if(isset($_SESSION['accountMesagge'])){
-    unset($_SESSION['accountMesagge']);
+if(isset($_SESSION['accountMessage'])){
+    unset($_SESSION['accountMessage']);
 }
  ?>
