@@ -317,7 +317,7 @@ function editReviewForm($review){
    $display .= "<form method='post' action='/phpmotors/reviews/index.php'>
                   <fieldset>
                      <label for='reviewText'>Review Text
-                        <textarea id='reviewText' name='reviewText'>$review[reviewText]</textarea>
+                        <textarea id='reviewText' name='reviewText' required>$review[reviewText]</textarea>
                      </label>
                      <button type='submit' id='updateReview'>Update</button>
                      <input type='hidden' name='action' value='confirmedEdit'>
